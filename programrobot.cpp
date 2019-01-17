@@ -40,21 +40,21 @@ void setup() {
   pinMode(trigPinLeft, OUTPUT);
  pinMode(echoPinLeft, INPUT);
 
-  pinMode(trigPinRight, OUTPUT);
- pinMode(echoPinRight, INPUT);
+  pinMode(trigPRight, OUTPUT);
+ pinMode(echoPRight, INPUT);
 
  pinMode(LEDPin, OUTPUT);
 }
 
 void loop() {
 
- digitalWrite(trigPin, LOW);
+ digitalWrite(trigPi, LOW);
  delayMicroseconds(2);
 
- digitalWrite(trigPin, HIGH);
+ digitalWrite(trigPi, HIGH);
  delayMicroseconds(10);
 
- digitalWrite(trigPin, LOW);
+ digitalWrite(trigPi, LOW);
  durationFront = pulseIn(echoPin, HIGH);
 
 
@@ -64,28 +64,28 @@ void loop() {
 
 
 
-  digitalWrite(trigPinLeft, LOW);
+  digitalWrite(trigPLeft, LOW);
  delayMicroseconds(2);
 
- digitalWrite(trigPinLeft, HIGH);
+ digitalWrite(trigPLeft, HIGH);
  delayMicroseconds(10);
 
- digitalWrite(trigPinLeft, LOW);
- durationLeft = pulseIn(echoPinLeft, HIGH);
+ digitalWrite(trigPLeft, LOW);
+ durationLeft = pulseIn(echoPLeft, HIGH);
 
 
  distanceLeft = (durationLeft/2) / 29.1;
 
 
 
-  digitalWrite(trigPinRight, LOW);
+  digitalWrite(trigPRight, LOW);
  delayMicroseconds(2);
 
- digitalWrite(trigPinRight, HIGH);
+ digitalWrite(trigPRight, HIGH);
  delayMicroseconds(10);
 
- digitalWrite(trigPinRight, LOW);
- durationRight = pulseIn(echoPinRight, HIGH);
+ digitalWrite(trigPRight, LOW);
+ durationRight = pulseIn(echoPRight, HIGH);
 
  distanceRight = (durationRight/2) / 29.1;
 
@@ -93,18 +93,18 @@ void loop() {
 
 
  if (distanceFront > 40) {
-  analogWrite(LeftmotorPin1, 0);
-  analogWrite(LeftmotorPin2, 177);
-  analogWrite(RightmotorPin3, 0);
-  analogWrite(RightmotorPin4, 255);
+  analogWrite(LeftmPin1, 0);
+  analogWrite(LeftmPin2, 177);
+  analogWrite(RightmPin3, 0);
+  analogWrite(RightmPin4, 255);
  }
 
 
  else if (distanceFront < 40 && distanceRight > distanceLeft){
-  analogWrite(LeftmotorPin1, 0);
-  analogWrite(LeftmotorPin2, 255);
-  analogWrite(RightmotorPin3, 0);
-  analogWrite(RightmotorPin4, 0);
+  analogWrite(LeftmPin1, 0);
+  analogWrite(LeftmPin2, 255);
+  analogWrite(RightmPin3, 0);
+  analogWrite(RightmPin4, 0);
  }
 
  else if (distanceFront < 40 && distanceRight < distanceLeft){
@@ -115,10 +115,10 @@ void loop() {
  }
 
  else if (distanceFront < 40 && distanceLeft == distanceRight) {
-  analogWrite(LeftmotorPin1, 0);
-  analogWrite(LeftmotorPin2, 255);
-  analogWrite(RightmotorPin3, 0);
-  analogWrite(RightmotorPin4, 0);
+  analogWrite(LeftmPin1, 0);
+  analogWrite(LeftmPin2, 255);
+  analogWrite(RightmPin3, 0);
+  analogWrite(RightmPin4, 0);
  }
 
  delay(36);
